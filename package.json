@@ -1,0 +1,33 @@
+{
+  "name": "tasks-to-get-done",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/German-Cobian/Tasks-To-Get-Done.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/German-Cobian/Tasks-To-Get-Done/issues"
+  },
+  "homepage": "https://github.com/German-Cobian/Tasks-To-Get-Done#readme",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
