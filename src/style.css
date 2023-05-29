@@ -18,7 +18,7 @@ section {
   border-bottom: 2px solid black;
 }
 
-.input-task {
+#input-task {
   margin: 1% 2% 1% 2%;
   width: 94%;
 }

@@ -20,9 +20,15 @@ const addtask = () => {
   const input = document.getElementById('task-list-input');
   input.insertAdjacentHTML('beforeend', ` 
     <div id="new-tasks">
-      <input class="input-task" type="text" placeholder="Add to your list..." />
+      <input id="input-task" type="text" placeholder="Add to your list..." />
     </div>
   `);
+  const addActivity = document.getElementById('input-task');
+  addActivity.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      console.log(addActivity.value);
+    }
+  });
 };
 
 const renderList = (activities) => {
