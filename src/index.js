@@ -1,11 +1,8 @@
 import './style.css';
 
-const activities = [
-  { description: 'Un-clog the toilet', completed: false, index: 1 },
-  { description: 'Complain to the neighbor about his brats', completed: false, index: 4 },
-  { description: 'De-flea the dog', completed: true, index: 2 },
-  { description: 'Dish-out ethique lessons to porcupine', completed: true, index: 3 },
-];
+import {
+  activities,
+} from './app-functionality';
 
 // Rendering of App
 
