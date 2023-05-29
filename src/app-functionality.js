@@ -1,15 +1,23 @@
 // #1 Check display of dummy variables
 
-const activities = [
-  { description: 'Un-clog the toilet', completed: false, index: 2 },
-  { description: 'Complain to the neighbor about his brats', completed: false, index: 4 },
-  { description: 'De-flea the dog', completed: true, index: 1 },
-  { description: 'Dish-out ethique lessons to porcupine', completed: true, index: 3 },
-];
+//const activities = [
+//  { description: 'Un-clog the toilet', completed: false, index: 2 },
+//  { description: 'Complain to the neighbor about his brats', completed: false, index: 4 },
+//  { description: 'De-flea the dog', completed: true, index: 1 },
+//  { description: 'Dish-out ethique lessons to porcupine', completed: true, index: 3 },
+//];
 
-// #3 add inputted activity to the activities array
+// #4 Create the activities array where values will truly be stored
+let activities = [];
+
+// #5 Add new activity into localStorage (set the updated activities array)
+const archiveActivities = () => {
+  localStorage.setItem('activities', JSON.stringify(activities));
+  console.log(activities[0].description, activities[0].completed, activities[0].index);
+};
+
+// #3 Add inputted activity to the activities array
 const inputActivity = (description, completed, index) => {
-  console.log(description, completed, index);
   activities.push({ description, completed, index: parseInt(index, 10) });
 };
 
@@ -20,6 +28,7 @@ const assignIndexToActivity = (description) => {
     index = activities[activities.length - 1].index + 1;
   }
   inputActivity(description, false, index);
+  archiveActivities();
 };
 
 export {
