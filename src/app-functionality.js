@@ -7,13 +7,19 @@ const activities = [
   { description: 'Dish-out ethique lessons to porcupine', completed: true, index: 3 },
 ];
 
+// #3 add inputted activity to the activities array
+const inputActivity = (description, completed, index) => {
+  console.log(description, completed, index);
+  activities.push({ description, completed, index: parseInt(index, 10) });
+};
+
 // #2 Create index for the inputed activity
 const assignIndexToActivity = (description) => {
   let index = 0;
   if (activities.length > 0) {
     index = activities[activities.length - 1].index + 1;
   }
-  console.log(description, index);
+  inputActivity(description, false, index);
 };
 
 export {
