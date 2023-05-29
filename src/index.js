@@ -2,6 +2,7 @@ import './style.css';
 
 import {
   activities,
+  assignIndexToActivity,
 } from './app-functionality';
 
 // Rendering of App
@@ -26,7 +27,7 @@ const addtask = () => {
   const addActivity = document.getElementById('input-task');
   addActivity.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      console.log(addActivity.value);
+      assignIndexToActivity(addActivity.value);
     }
   });
 };

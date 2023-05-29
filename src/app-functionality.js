@@ -7,6 +7,16 @@ const activities = [
   { description: 'Dish-out ethique lessons to porcupine', completed: true, index: 3 },
 ];
 
+// #2 Create index for the inputed activity
+const assignIndexToActivity = (description) => {
+  let index = 0;
+  if (activities.length > 0) {
+    index = activities[activities.length - 1].index + 1;
+  }
+  console.log(description, index);
+};
+
 export {
   activities,
+  assignIndexToActivity,
 };
