@@ -43,8 +43,17 @@ const assignIndexToActivity = (description) => {
   archiveActivities();
 };
 
+// #7 Checkbox status
+const updateCheckboxStatus = (index, check) => {
+  const parsedInt = parseInt(index, 10);
+  const doneActivities = activities.find((activity) => activity.index === parsedInt);
+  doneActivities.completed = check;
+  archiveActivities();
+};
+
 export {
   activities,
   assignIndexToActivity,
   loadActivitiesList,
+  updateCheckboxStatus,
 };

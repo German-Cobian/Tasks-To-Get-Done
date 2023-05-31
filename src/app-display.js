@@ -1,4 +1,7 @@
-import { assignIndexToActivity } from './app-functionality';
+import {
+  assignIndexToActivity,
+  updateCheckboxStatus,
+} from './app-functionality';
 
 // Rendering of App
 
@@ -47,6 +50,19 @@ const renderList = (activities) => {
         <i class="clear-item fa fa-trash"/></i>
     </li> 
     `);
+    const checkbox = document.querySelectorAll(`[data-a1="${activity.index}"]`)[0];
+    checkbox.addEventListener('click', (e) => {
+      const activityId = e.target.getAttribute('data-a1');
+      let check;
+      if (activity.completed == false) {
+        checkbox.checked = true;
+        check = true;
+      } else {
+        checkbox.checked = false;
+        check = false;
+      }
+      updateCheckboxStatus(activityId, check);
+    });
   });
 };
 
