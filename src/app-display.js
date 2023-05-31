@@ -1,6 +1,7 @@
 import {
   assignIndexToActivity,
   updateCheckboxStatus,
+  editActivityDescription,
 } from './app-functionality';
 
 // Rendering of App
@@ -44,6 +45,7 @@ const renderList = (activities) => {
           type="checkbox"
           name="completed"
           class="completed"
+          checkedValue
           />
         <p data-b1="${activity.index}" class="description" contenteditable="true">${activity.description}</p>
       </div>
@@ -62,6 +64,14 @@ const renderList = (activities) => {
         check = false;
       }
       updateCheckboxStatus(activityId, check);
+    });
+    const text = document.querySelectorAll(`[data-b1="${activity.index}"]`)[0];
+    text.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const activityId = text.getAttribute('data-b1');
+        const descriptionEdit = text.textContent;
+        editActivityDescription(activityId, descriptionEdit);
+      }
     });
   });
 };
