@@ -92,6 +92,17 @@ const clearCompleted = () => {
   clear.insertAdjacentHTML('beforeend', `
     <p id="clear-tasks">Clear Completed Tasks</p>
   `);
+  clear.addEventListener('click', () => {
+    const display = document.getElementById('task-list-display');
+    const listItems = [...document.querySelectorAll('.task-item')];
+    const incompletes = listItems.filter((listItem) => listItem.getElementsByClassName('completed')[0].checked === false);
+    
+    listItems.forEach((listItem) => display.removeChild(listItem));
+    incompletes.forEach((item) => display.appendChild(item));
+    
+    localStorage.clear();
+    repopulateList();
+  })
 };
 
 heading();
