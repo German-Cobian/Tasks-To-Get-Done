@@ -59,10 +59,37 @@ const editActivityDescription = (index, description) => {
   archiveActivities();
 };
 
+// #9 empty and repopulate list
+
+const emptyList = () => {
+  activities = [];
+};
+
+const repopulateList = () => {
+  emptyList();
+  const listItems = document.querySelectorAll('.task-item');
+
+  let i = 0;
+  listItems.forEach((listItem) => {
+    listItem.setAttribute('activity', i);
+    i += 1;
+  });
+
+  listItems.forEach((listItem) => {
+    const description = listItem.getElementsByClassName('description')[0].textContent;
+    const completed = listItem.getElementsByClassName('completed')[0].checked;
+    const index = listItem.getAttribute('activity');
+
+    inputActivity(description, completed, index);
+    archiveActivities();
+  });
+};
+
 export {
   activities,
   assignIndexToActivity,
   loadActivitiesList,
   updateCheckboxStatus,
   editActivityDescription,
+  repopulateList,
 };

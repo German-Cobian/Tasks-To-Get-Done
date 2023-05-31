@@ -27,7 +27,7 @@ section {
   border-top: 2px solid black;
 }
 
-#task-item {
+.task-item {
   display: flex;
   flex-direction: row;
   justify-content: space-around;

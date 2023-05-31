@@ -2,6 +2,7 @@ import {
   assignIndexToActivity,
   updateCheckboxStatus,
   editActivityDescription,
+  repopulateList,
 } from './app-functionality';
 
 // Rendering of App
@@ -38,14 +39,13 @@ const renderList = (activities) => {
   activities.forEach((activity) => {
     console.log(activity);
     display.insertAdjacentHTML('beforeend', ` 
-    <li id="task-item">
+    <li class="task-item">
       <div class="chk-descr">
         <input 
           data-a1="${activity.index}"
           type="checkbox"
           name="completed"
           class="completed"
-          checkedValue
           />
         <p data-b1="${activity.index}" class="description" contenteditable="true">${activity.description}</p>
       </div>
@@ -75,6 +75,17 @@ const renderList = (activities) => {
     });
   });
 };
+
+// Place event listener for clear-item outside of renderList() so that the click handler is
+// not added every time the item is added
+document.body.addEventListener('click', (e) => {
+  const el = e.target;
+  if (el.classList.contains('clear-item')) {
+    el.parentNode.remove();
+    localStorage.clear();
+    repopulateList();
+  }
+});
 
 const clearCompleted = () => {
   const clear = document.getElementById('task-list-clear');
