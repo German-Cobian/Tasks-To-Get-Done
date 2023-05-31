@@ -23,6 +23,7 @@ const addtask = () => {
   addActivity.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       assignIndexToActivity(addActivity.value);
+      addActivity.value = '';
     }
   });
 };
