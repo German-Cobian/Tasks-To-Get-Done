@@ -53,10 +53,13 @@ const renderList = (activities) => {
     </li> 
     `);
     const checkbox = document.querySelectorAll(`[data-a1="${activity.index}"]`)[0];
+    if (activity.completed === true) {
+      checkbox.setAttribute('checked', 'checked');
+    }
     checkbox.addEventListener('click', (e) => {
       const activityId = e.target.getAttribute('data-a1');
       let check;
-      if (activity.completed == false) {
+      if (activity.completed === false) {
         checkbox.checked = true;
         check = true;
       } else {
@@ -87,6 +90,8 @@ document.body.addEventListener('click', (e) => {
   }
 });
 
+
+
 const clearCompleted = () => {
   const clear = document.getElementById('task-list-clear');
   clear.insertAdjacentHTML('beforeend', `
@@ -102,7 +107,7 @@ const clearCompleted = () => {
     
     localStorage.clear();
     repopulateList();
-  })
+  });
 };
 
 heading();
