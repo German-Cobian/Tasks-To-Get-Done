@@ -15,6 +15,10 @@ const heading = () => {
         <i id="refresh-icon" class="fa fa-refresh"></i>
       </div> 
   `);
+  const i = document.getElementById('refresh-icon');
+  i.addEventListener('click', () => {
+    window.location.reload();
+  });
 };
 
 const addtask = () => {
