@@ -73,12 +73,10 @@ const repopulateList = () => {
   listItems.forEach((listItem) => {
     listItem.setAttribute('activity', i);
     i += 1;
-  });
 
-  listItems.forEach((listItem) => {
+    const index = listItem.getAttribute('activity');
     const description = listItem.getElementsByClassName('description')[0].textContent;
     const completed = listItem.getElementsByClassName('completed')[0].checked;
-    const index = listItem.getAttribute('activity');
 
     inputActivity(description, completed, index);
     archiveActivities();

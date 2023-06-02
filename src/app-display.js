@@ -43,7 +43,7 @@ const renderList = (activities) => {
   activities.forEach((activity) => {
     console.log(activity);
     display.insertAdjacentHTML('beforeend', ` 
-    <li class="task-item">
+    <li class="task-item" draggable="true" data-id="${activity.index}">
       <div class="chk-descr">
         <input 
           data-a1="${activity.index}"
@@ -80,6 +80,24 @@ const renderList = (activities) => {
         editActivityDescription(activityId, descriptionEdit);
       }
     });
+    display.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.dataset.id);
+    });
+    display.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      [...display.querySelectorAll('li')].forEach((li) => li.classList.remove('over'));
+      e.target.closest('li.task-item').classList.add('over');
+    });
+    display.addEventListener('drop', (e) => {
+      e.preventDefault();
+      [...display.querySelectorAll('li')].forEach((li) => li.classList.remove('over'));
+      const original = document.querySelector(`li[data-id="${e.dataTransfer.getData('text/plain')}"]`);
+      const clone = original.cloneNode(true);
+      const target = e.target.closest('li.task-item');
+      display.insertBefore(clone, target);
+      display.removeChild(original);
+      repopulateList();
+    });
   });
 };
 
@@ -93,8 +111,6 @@ document.body.addEventListener('click', (e) => {
     repopulateList();
   }
 });
-
-
 
 const clearCompleted = () => {
   const clear = document.getElementById('task-list-clear');
