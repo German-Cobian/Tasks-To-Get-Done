@@ -41,7 +41,6 @@ const renderList = (activities) => {
   const display = document.getElementById('task-list-display');
   activities.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   activities.forEach((activity) => {
-    console.log(activity);
     display.insertAdjacentHTML('beforeend', ` 
     <li class="task-item" draggable="true" data-id="${activity.index}">
       <div class="chk-descr">
